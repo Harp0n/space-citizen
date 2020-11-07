@@ -13,6 +13,7 @@ function Menu() {
                 <Link to="/light">Light</Link>
                 <Link to="/fitness">Fitness</Link>
                 <Link to="/health">Health</Link>
+                <Link to="/food">Food</Link>
             </div>
 
             <h2>HOW TO</h2>

@@ -1,0 +1,35 @@
+.calories {
+    background-color: #FF5F5F;
+    padding: 4px 8px;
+    border-radius: 8px;
+    width: 20%;
+    color: black;
+    font-weight: 500;
+}
+.fat {
+    background-color: #fdff88;
+    padding: 4px 8px;
+    border-radius: 8px;
+    width: 20%;
+    color: black;
+    font-weight: 500;
+
+}
+.protein {
+    background-color: #a36e6e;
+    padding: 4px 8px;
+    border-radius: 8px;
+    width: 20%;
+    color: black;
+    font-weight: 500;
+
+}
+.carbon {
+    background-color: #D3D3D3;
+    padding: 4px 8px;
+    border-radius: 8px;
+    width: 20%;
+    color: black;
+    font-weight: 500;
+
+}
