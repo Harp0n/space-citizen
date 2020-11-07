@@ -9,33 +9,33 @@ import { Link } from "react-router-dom";
 function Sleep() {
   const dataWeek = [
     {
-        day: "24.11",
-        time: 7.5,
-      },
+      day: "24.11",
+      time: 7.5,
+    },
     {
-        day: "25.11",
-        time: 8.5,
-      },
-      {
-        day: "26.11",
-        time: 6,
-      },
-      {
-        day: "27.11",
-        time: 7,
-      },
-      {
-        day: "28.11",
-        time: 10,
-      },
-      {
-        day: "29.11",
-        time: 8,
-      },
-      {
-        day: "30.11",
-        time: 8,
-      },
+      day: "25.11",
+      time: 8.5,
+    },
+    {
+      day: "26.11",
+      time: 6,
+    },
+    {
+      day: "27.11",
+      time: 7,
+    },
+    {
+      day: "28.11",
+      time: 10,
+    },
+    {
+      day: "29.11",
+      time: 8,
+    },
+    {
+      day: "30.11",
+      time: 8,
+    },
   ];
 
   const dataMonth = [
@@ -162,49 +162,49 @@ function Sleep() {
   ];
   const dataDays = [
     {
-        day: "20.11",
-        time: 8,
-      },
-      {
-        day: "21.11",
-        time: 5,
-      },
-      {
-        day: "22.11",
-        time: 5,
-      },
-      {
-        day: "23.11",
-        time: 6,
-      },
-      {
-        day: "24.11",
-        time: 7.5,
-      },
-      {
-        day: "25.11",
-        time: 8.5,
-      },
-      {
-        day: "26.11",
-        time: 6,
-      },
-      {
-        day: "27.11",
-        time: 7,
-      },
-      {
-        day: "28.11",
-        time: 10,
-      },
-      {
-        day: "29.11",
-        time: 8,
-      },
-      {
-        day: "30.11",
-        time: 8,
-      },
+      day: "20.11",
+      time: 8,
+    },
+    {
+      day: "21.11",
+      time: 5,
+    },
+    {
+      day: "22.11",
+      time: 5,
+    },
+    {
+      day: "23.11",
+      time: 6,
+    },
+    {
+      day: "24.11",
+      time: 7.5,
+    },
+    {
+      day: "25.11",
+      time: 8.5,
+    },
+    {
+      day: "26.11",
+      time: 6,
+    },
+    {
+      day: "27.11",
+      time: 7,
+    },
+    {
+      day: "28.11",
+      time: 10,
+    },
+    {
+      day: "29.11",
+      time: 8,
+    },
+    {
+      day: "30.11",
+      time: 8,
+    },
   ];
   const cols = {
     time: {
@@ -230,7 +230,7 @@ function Sleep() {
   const [data, setData] = useState([...dataWeek]);
   const [sleepStageData, setSleepStageData] = useState(sleepStageDataInitial);
   const [currDay, setCurrDay] = useState(["TODAY", "Tonight"]);
-  const [currDataType, setCurrDataType] = useState(0); 
+  const [currDataType, setCurrDataType] = useState(0);
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -270,6 +270,11 @@ function Sleep() {
     );
   };
 
+  const convertHoursToMinutes = (hours) => {
+    const hrs = parseInt(hours);
+    const minutes = (hours - hrs) * 60;
+    return `${hrs}h ${minutes}min`;
+  };
   const getTimeSlept = (minutes) => {
     const hours = parseInt(minutes / 60);
     const mins = minutes - hours * 60;
@@ -277,7 +282,6 @@ function Sleep() {
   };
 
   const getDay = (day) => {
-    console.log(currDay);
     if (day === data[data.length - 1].day) {
       setCurrDay(["TODAY", "Tonight"]);
     } else setCurrDay([`ON ${day}`, `On ${day}`]);
@@ -297,7 +301,11 @@ function Sleep() {
             title={d.title}
           />
         ))}
-        <Link to="/light"><button className={[styles.button, styles.whiteBtn].join(' ')}>Light assistant</button></Link>
+        <Link to="/light">
+          <button className={[styles.button, styles.whiteBtn].join(" ")}>
+            Light assistant
+          </button>
+        </Link>
       </nav>
       <div className={styles.titleDiv}>
         <h1>Sleep</h1>
@@ -323,10 +331,9 @@ function Sleep() {
             </p>
             <p className={styles.trackTextInfoQuality}>
               {currDay[1]} your quality of sleep was{" "}
-              <span>{getQualityOfSleep(sleepStageDataTime)}</span>.{" "} <br/>
+              <span>{getQualityOfSleep(sleepStageDataTime)}</span>. <br />
               <p className={styles.trackTextInfo}>
-
-              Below you can see history of your sleep. 
+                Below you can see history of your sleep.
               </p>
             </p>
           </div>
@@ -368,12 +375,21 @@ function Sleep() {
             color="white"
           />
           <Tooltip
-            showCrosshairs
-            triggerOn="hover"
-            crosshairs={{
-              type: "y",
+            domStyles={{ "g2-tooltip": { backgroundColor: "#CD4A4A" } }}
+          >
+            {(title, items) => {
+              const day = items[0].data.day;
+              const time = items[0].data.time;
+              return (
+                <div className={styles.tooltip}>
+                  <h1>{title}</h1>
+                  <h2>
+                    On {day} you slept <p>{convertHoursToMinutes(time)}</p>
+                  </h2>
+                </div>
+              );
             }}
-          />
+          </Tooltip>
           <Axis
             name="time"
             label={{ formatter: (val) => `${val}H` }}
@@ -394,33 +410,43 @@ function Sleep() {
 
         <div className={styles.buttonsContainer}>
           <button
-            className={[styles.button, styles.weekBtn, currDataType === 0? styles.active : null ].join(" ")}
+            className={[
+              styles.button,
+              styles.weekBtn,
+              currDataType === 0 ? styles.active : null,
+            ].join(" ")}
             onClick={() => {
-              if(currDataType === 0) return; 
+              if (currDataType === 0) return;
               setData([...dataWeek]);
-              setCurrDataType(0); 
+              setCurrDataType(0);
             }}
           >
             Week
           </button>
           <button
-            className={[styles.button, styles.monthBtn, currDataType === 1? styles.active : null ].join(" ")}
+            className={[
+              styles.button,
+              styles.monthBtn,
+              currDataType === 1 ? styles.active : null,
+            ].join(" ")}
             onClick={() => {
-              if(currDataType === 1) return; 
+              if (currDataType === 1) return;
               setData([...dataMonth]);
-              setCurrDataType(1); 
-
+              setCurrDataType(1);
             }}
           >
             Month
           </button>
           <button
-            className={[styles.button, styles.daysBtn, currDataType === 2? styles.active : null ].join(" ")}
+            className={[
+              styles.button,
+              styles.daysBtn,
+              currDataType === 2 ? styles.active : null,
+            ].join(" ")}
             onClick={() => {
-              if(currDataType === 2) return; 
+              if (currDataType === 2) return;
               setData([...dataDays]);
-              setCurrDataType(2); 
-
+              setCurrDataType(2);
             }}
           >
             10 days
@@ -440,7 +466,7 @@ function Sleep() {
           );
         })}
       </div>
-      <VideoContainer/>
+      <VideoContainer />
     </div>
   );
 }
