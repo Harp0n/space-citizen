@@ -24,7 +24,7 @@ function Menu() {
             <div className={styles.menuContainerManagment}>                
                 <Link to="/sleep"><button className={styles.button}>Sleep</button></Link>
                 <Link to="/light"><button className={styles.button}>Light</button></Link>
-                <Link to="/fitness"><button className={styles.button}>Fitness</button></Link>
+                <Link to="/food"><button className={styles.button}>Food</button></Link>
                 <Link to="/health"><button className={styles.button}>Health</button></Link>
             </div>
 
