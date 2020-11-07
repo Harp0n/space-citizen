@@ -4,6 +4,7 @@ import trackImage from "../../assets/track.svg";
 import { Chart, Line, Point, Tooltip, Axis, Legend } from "bizcharts";
 import SleepStages from "./SleepStages/SleepStages";
 import VideoContainer from "./VideoContainer/VideoContainer";
+import { Link } from "react-router-dom";
 
 function Sleep() {
   const dataWeek = [
@@ -229,7 +230,7 @@ function Sleep() {
   const [data, setData] = useState([...dataWeek]);
   const [sleepStageData, setSleepStageData] = useState(sleepStageDataInitial);
   const [currDay, setCurrDay] = useState(["TODAY", "Tonight"]);
-
+  const [currDataType, setCurrDataType] = useState(0); 
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -296,7 +297,7 @@ function Sleep() {
             title={d.title}
           />
         ))}
-        <button className={[styles.button, styles.whiteBtn].join(' ')}>Light assistant</button>
+        <Link to="/light"><button className={[styles.button, styles.whiteBtn].join(' ')}>Light assistant</button></Link>
       </nav>
       <div className={styles.titleDiv}>
         <h1>Sleep</h1>
@@ -393,25 +394,33 @@ function Sleep() {
 
         <div className={styles.buttonsContainer}>
           <button
-            className={[styles.button, styles.weekBtn].join(" ")}
+            className={[styles.button, styles.weekBtn, currDataType === 0? styles.active : null ].join(" ")}
             onClick={() => {
+              if(currDataType === 0) return; 
               setData([...dataWeek]);
+              setCurrDataType(0); 
             }}
           >
             Week
           </button>
           <button
-            className={[styles.button, styles.monthBtn].join(" ")}
+            className={[styles.button, styles.monthBtn, currDataType === 1? styles.active : null ].join(" ")}
             onClick={() => {
+              if(currDataType === 1) return; 
               setData([...dataMonth]);
+              setCurrDataType(1); 
+
             }}
           >
             Month
           </button>
           <button
-            className={[styles.button, styles.daysBtn].join(" ")}
+            className={[styles.button, styles.daysBtn, currDataType === 2? styles.active : null ].join(" ")}
             onClick={() => {
+              if(currDataType === 2) return; 
               setData([...dataDays]);
+              setCurrDataType(2); 
+
             }}
           >
             10 days
