@@ -1,0 +1,14 @@
+.menu {
+
+}
+
+.menuContainerManagment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuContainerTool {
+    text-decoration: none;
+}
