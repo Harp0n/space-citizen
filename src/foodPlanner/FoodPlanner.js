@@ -99,7 +99,7 @@ class FoodPlanner {
 
         var water = this.foodDatabase.getWater();
         while (left_nutritions.getFluid() > 0) {
-            return_food.push([randomTime(8, 23), water]);
+            return_food.push([randomTime(8, 22), water]);
             left_nutritions.setFluid(left_nutritions.getFluid() - water.getNutritions().getFluid());
         }
 
@@ -123,8 +123,9 @@ class FoodPlanner {
 }
 
 
-var foodPlanner = new FoodPlanner()
+if (DEBUG) console.log('Dzienne zapotrzebowanie kobiety', FoodPlanner.calculateRequiredNutrition(21, 67, 166, 'female'));
 
+var foodPlanner = new FoodPlanner()
 setTimeout(() => {
     var x = foodPlanner.generateDailyMenu(21, 67, 166, 'male');
     if (DEBUG) console.log('Lista zakupów: ', x);

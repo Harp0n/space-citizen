@@ -35,11 +35,11 @@ export default class FoodDatabase {
         let foodJson = await csvJSON('food_edited.csv');
         this.foodArray = [];
         foodJson.forEach(element => {
-            this.foodArray.push(new Food(element['name'], element['water'], element['calories'], element['protein'], element['carbohydrate'], element['fat']));
+            this.foodArray.push(new Food(element['id'], element['group'], element['water'], element['calories'], element['protein'], element['carbohydrate'], element['fat']));
         });
 
         this.foodArray.pop();
-        this.water = new Food('portion of water', 237, 0, 0, 0, 0);
+        this.water = new Food('Water', 'Water', 237, 0, 0, 0, 0);
     }
 
     getFoodList() {
