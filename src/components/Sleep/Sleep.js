@@ -8,33 +8,33 @@ import VideoContainer from "./VideoContainer/VideoContainer";
 function Sleep() {
   const dataWeek = [
     {
-      day: "1.11",
-      time: 4,
-    },
+        day: "24.11",
+        time: 7.5,
+      },
     {
-      day: "2.11",
-      time: 7,
-    },
-    {
-      day: "3.11",
-      time: 8.3,
-    },
-    {
-      day: "4.11",
-      time: 7,
-    },
-    {
-      day: "5.11",
-      time: 9,
-    },
-    {
-      day: "6.11",
-      time: 6,
-    },
-    {
-      day: "7.11",
-      time: 7,
-    },
+        day: "25.11",
+        time: 8.5,
+      },
+      {
+        day: "26.11",
+        time: 6,
+      },
+      {
+        day: "27.11",
+        time: 7,
+      },
+      {
+        day: "28.11",
+        time: 10,
+      },
+      {
+        day: "29.11",
+        time: 8,
+      },
+      {
+        day: "30.11",
+        time: 8,
+      },
   ];
 
   const dataMonth = [
@@ -161,45 +161,49 @@ function Sleep() {
   ];
   const dataDays = [
     {
-      day: "1.11",
-      time: 5,
-    },
-    {
-      day: "2.11",
-      time: 5,
-    },
-    {
-      day: "3.11",
-      time: 6,
-    },
-    {
-      day: "4.11",
-      time: 7.5,
-    },
-    {
-      day: "5.11",
-      time: 8.5,
-    },
-    {
-      day: "6.11",
-      time: 6,
-    },
-    {
-      day: "7.11",
-      time: 7,
-    },
-    {
-      day: "8.11",
-      time: 10,
-    },
-    {
-      day: "9.11",
-      time: 8,
-    },
-    {
-      day: "10.11",
-      time: 8,
-    },
+        day: "20.11",
+        time: 8,
+      },
+      {
+        day: "21.11",
+        time: 5,
+      },
+      {
+        day: "22.11",
+        time: 5,
+      },
+      {
+        day: "23.11",
+        time: 6,
+      },
+      {
+        day: "24.11",
+        time: 7.5,
+      },
+      {
+        day: "25.11",
+        time: 8.5,
+      },
+      {
+        day: "26.11",
+        time: 6,
+      },
+      {
+        day: "27.11",
+        time: 7,
+      },
+      {
+        day: "28.11",
+        time: 10,
+      },
+      {
+        day: "29.11",
+        time: 8,
+      },
+      {
+        day: "30.11",
+        time: 8,
+      },
   ];
   const cols = {
     time: {
