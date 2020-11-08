@@ -7,34 +7,56 @@
     flex-direction: column;
     align-items: center;
 
+    .header{
+        
+    }
+
+
+        .title {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 7rem;
+            font-weight: 500;
+            width: 100%;
+            color: white;
+        }
+         img {
+             margin-top: 2rem;
+            align-self: flex-end;
+         }
+
     .progressBars {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 20rem;
+        margin-bottom: 15rem;
         margin-top: 5rem;
-        // width: 80%;
         &>* {
             width: 20%;
         }
+        &>div>p {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+        }
     }
 
-    .title {
-        text-align: center;
-        font-size: 7rem;
-        font-weight: 500;
-        width: 100%;
-        color: white;
-    }
+    
 
 
     &_chart {
         .chartTitle {
-            font-size: 2rem;
+            font-size: 4rem;
             color: #FF5151;
             span:first-of-type {
                 color: white;
                 margin-right: 10px;
             }
+        }
+
+        .description {
+            font-size: 1.5rem;
+            color: white;
         }
 
         .dateLabel {
