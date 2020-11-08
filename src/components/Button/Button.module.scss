@@ -1,12 +1,16 @@
+$red: #CD4A4A;
+$background: #212121;
+$lightgray: #CAC7C7;
+
 button {
 	margin: 0 40px;
 	width: 120px;
 	height: 45px;
-    border: 1px solid #ff5151;
+    border: 1px solid $red;
     font-size: 20px;
     font-weight: 500;
 	background-color: transparent;
-	color: #ff5151;
+	color: $red;
     border-radius: 5px;
     
     &:focus {
@@ -15,8 +19,7 @@ button {
 }
 
 .active {
-    color: #212121;
-    background-color: #ff5151;
+    color: $background;
+    background-color: $red;
     border: none;
 }
-

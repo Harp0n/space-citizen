@@ -1,36 +1,27 @@
 import React from 'react'
 import {
+    G2,
     Chart,
-    Interval,
     Tooltip,
-    Axis,
-    Coordinate,
-    Interaction
-} from 'bizcharts';
+    Interval,
+} from "bizcharts";
 import classes from "./FoodChart.module.css"
 
 function FoodChart(props) {
     return (
         <div className={classes.containerChart}>
-            <Chart height={250} data={props.data} scale={props.cols} autoFit>
-                <Coordinate type="theta" radius={0.60} />
-                <Tooltip showTitle={false} />
-                <Axis visible={false} color='white' />
+            <Chart height={400} width={700} padding="auto" data={props.data} autoFit>
                 <Interval
-                    position="percent"
-                    adjust="stack"
-                    color={['type', ['#FF5F5F', '#A0B4FF', '#FDFF90', '#695959', '#D3D3D3']]}
-                    style={{
-                        lineWidth: 1,
-                        stroke: 'transparent'
-                    }}
-                    label={['count', {
-                        content: (data) => {
-                            return `${data.type}: ${(data.percent * 100).toFixed(2)}%`;
+                    adjust={[
+                        {
+                            type: 'dodge',
+                            marginRatio: 0,
                         },
-                    }]}
+                    ]}
+                    color={['mode', ['#FF5F5F', '#A0B4FF']]}                    
+                    position="type*value"
                 />
-                <Interaction type='element-single-selected' />
+                <Tooltip shared />
             </Chart>
         </div>
     )

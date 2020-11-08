@@ -1,16 +1,19 @@
 import Food from './Food.js'
 import Nutritions from './Nutritions.js';
 import FoodDatabase from './FoodDatabase.js';
-import { shuffle, randomTime } from './utils.js';
+import { shuffle, randomTime } from './utils';
 
-var DEBUG = true;
+var DEBUG = false;
 
 
 class FoodPlanner {
     constructor() {
         this.foodDatabase = new FoodDatabase();
-        this.foodDatabase.init();
     }
+    async init() {
+        await this.foodDatabase.init();
+    }
+
     static calculateRMR(age, weight, height, gender) {
         switch (gender) {
             case 'male':
@@ -65,6 +68,7 @@ class FoodPlanner {
         if (DEBUG) console.log('Zapotrzebowanie: ', left_nutritions);
         var return_food = [];
         var food_array = this.foodDatabase.getFoodList();
+        if (DEBUG) console.log('CSV: ', food_array);
 
         var iterations = 20;
 
@@ -122,12 +126,12 @@ class FoodPlanner {
     }
 }
 
-var foodPlanner = new FoodPlanner()
-
 export function getRequiredNutrition({age, weight, height, gender}) {
-    return FoodPlanner.calculateRequiredNutrition(age, weight, height, gender)
+    return FoodPlanner.calculateRequiredNutrition(age, weight, height, gender);
 }
 
 export async function getDailyMenu({age, weight, height, gender}) {
+    var foodPlanner = new FoodPlanner();
+    await foodPlanner.init();
     return foodPlanner.generateDailyMenu(age, weight, height, gender);
 }

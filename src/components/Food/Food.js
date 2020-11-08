@@ -8,15 +8,16 @@ import {getDailyMenu, getRequiredNutrition} from "../../algorithms/foodPlanner/F
 
 function Food() {
     const [value, setvalue] = useState(new Date());
-    const [food, setFood] = useState(foodList);
+    const [food, setFood] = useState([]);
     const [person, setPerson] = useState(
         {
             weight: 80,
             height: 180,
-            gender: 'man',
+            gender: 'male',
             age: 21
         });
     const [modalVisible, setModalVisible] = useState(true);
+    const [reqNutrition, setReqNutrition] = useState([]);
 
     useEffect(() => {
         const interval = setInterval(
@@ -37,11 +38,83 @@ function Food() {
     }
 
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         setModalVisible(false)
-        console.log(getDailyMenu(person));
-        console.log(getRequiredNutrition(person));
+
+        const reqNut =  getRequiredNutrition(person);
+        const dailyMenu = await getDailyMenu(person);
+
+        console.log(reqNut);
+        console.log(dailyMenu);
+
+        const foodList = [];
+
+        dailyMenu.forEach(element => {
+            if(element[1].name != "Water")
+            {
+                foodList.push(
+                    {
+                        type: "food",
+                        hour: `${addZero(element[0].hours)}:${addZero(element[0].minutes)}`,
+                        name: element[1].name,
+                        calories: element[1].nutritions.calories,
+                        protein: element[1].nutritions.proteins,
+                        carbon: element[1].nutritions.carbs,
+                        fat: element[1].nutritions.fats,
+                        checked: false
+                    }
+                )
+            }
+            else {
+                foodList.push(
+                    {
+                        type: "water",
+                        name: "water",
+                        hour: `${addZero(element[0].hours)}:${addZero(element[0].minutes)}`,
+                        ml: element[1].nutritions.fluid,
+                        checked: false
+                    }
+                )
+            }
+        });
+
+        setFood(foodList);
+
+        const chartData = [
+            {
+                type: 'calories',
+                value: reqNut.calories,
+                mode: 'goal',
+                color: '#FF5F5F'
+            },
+            {
+                type: 'water',
+                value:  reqNut.fluid ,
+                mode: 'goal',
+                color: '#A0B4FF'
+            },
+            {
+                type: 'fat',
+                value: reqNut.fats,
+                mode: 'goal',
+                color: '#FDFF90'
+            },
+            {
+                type: 'protein',
+                value: reqNut.proteins,
+                mode: 'goal',
+                color: '#695959'
+            },
+            {
+                type: 'carbs',
+                value:  reqNut.carbs,
+                mode: 'goal',
+                color: '#D3D3D3'
+            }
+        ];
+
+        setReqNutrition(chartData);
     }
 
     const handleGenderChange = (event) => {
@@ -50,10 +123,10 @@ function Food() {
         const personClone = {...person};
 
         if(event.target.id === "man") {
-            personClone.gender = "man";
+            personClone.gender = "male";
         }
         else if(event.target.id === "woman") {
-            personClone.gender = "woman";
+            personClone.gender = "female";
         }
         
         setPerson(personClone);
@@ -110,47 +183,42 @@ function Food() {
             }
         });
 
-        let sum = calories + water + fat + protein + carbon;
-        if (sum === 0) {
-            sum = 1;
-        }
-
         return [
             {
                 type: 'calories',
                 value: calories,
-                percent: calories / sum,
-                color: '#FF5F5F'
+                color: '#FF5F5F',
+                mode: 'current'
             },
             {
                 type: 'water',
                 value: water,
-                percent: water / sum,
-                color: '#A0B4FF'
+                color: '#A0B4FF',
+                mode: 'current'
             },
             {
                 type: 'fat',
                 value: fat,
-                percent: fat / sum,
-                color: '#FDFF90'
+                color: '#FDFF90',
+                mode: 'current'
             },
             {
                 type: 'protein',
                 value: protein,
-                percent: protein / sum,
-                color: '#695959'
+                color: '#695959',
+                mode: 'current'
             },
             {
-                type: 'carbon',
+                type: 'carbs',
                 value: carbon,
-                percent: carbon / sum,
-                color: '#D3D3D3'
+                color: '#D3D3D3',
+                mode: 'current'
             }
         ];
     }
 
     const checkHandlerButton = (index) => {
-        const foodListCopy = [...foodList];
+        const foodListCopy = [...food];
 
         foodListCopy[index].checked = !foodListCopy[index].checked;
 
@@ -159,15 +227,6 @@ function Food() {
     }
 
     const foodRes = calculateFoodResources();
-
-    const cols = {
-        percent: {
-            formatter: val => {
-                val = val * 100 + '%';
-                return val;
-            },
-        },
-    };
 
     return (
         <>
@@ -189,7 +248,7 @@ function Food() {
                         </div>
                     })}
                 </div>
-                <FoodChart col={cols} data={foodRes} />
+                <FoodChart data={[...foodRes, ...reqNutrition]} />
             </div>
 
             <FoodList food={food} checkHandlerButton={checkHandlerButton}/>
@@ -197,94 +256,6 @@ function Food() {
         </>
     )
 }
-
-const foodList = [
-    {
-        type: "food",
-        hour: "12:30",
-        name: "Racja 741",
-        calories: "210",
-        protein: "20",
-        carbon: "30",
-        fat: "12",
-        checked: true
-    },
-    {
-        type: "water",
-        name: "water",
-        hour: "13:40",
-        ml: 500,
-        checked: true
-    },
-    {
-        type: "food",
-        hour: "14:00",
-        name: "Racja 741",
-        calories: "210",
-        protein: "20",
-        carbon: "30",
-        fat: "12",
-        checked: true
-    },
-    {
-        type: "water",
-        name: "water",
-        hour: "16:00",
-        ml: 500,
-        checked: false
-    },
-    {
-        type: "food",
-        hour: "16:00",
-        name: "Racja 741",
-        calories: "210",
-        protein: "20",
-        carbon: "30",
-        fat: "12",
-        checked: false
-    },
-    {
-        type: "water",
-        name: "water",
-        hour: "17:00",
-        ml: 500,
-        checked: false
-    },
-    {
-        type: "water",
-        name: "water",
-        hour: "17:40",
-        ml: 500,
-        checked: false
-    },
-    {
-        type: "water",
-        name: "water",
-        hour: "18:00",
-        ml: 500,
-        checked: false
-    },
-    {
-        type: "food",
-        hour: "19:00",
-        name: "Racja 741",
-        calories: "210",
-        protein: "20",
-        carbon: "30",
-        fat: "12",
-        checked: false
-    },
-    {
-        type: "food",
-        hour: "22:00",
-        name: "Racja 571",
-        calories: "210",
-        protein: "20",
-        carbon: "30",
-        fat: "12",
-        checked: false
-    }
-]
 
 
 export default Food
