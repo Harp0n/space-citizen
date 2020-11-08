@@ -1,0 +1,102 @@
+.container {
+    background-color: #212121;
+    width: 100vw;
+    height: 100vh;
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &>p{
+            margin-top: 10rem;
+            color: white;
+            font-weight: 500;
+            font-size: 4rem;
+        }
+    }
+
+    .switch {
+        margin: 1rem auto;
+    }
+    .sliders {
+        margin: 1rem auto;
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+
+        &>div{
+            width: 30%;
+             p {
+                 color: white;
+                 font-size: 1.5rem;
+             }
+        }
+    }
+
+    .nightTime {
+        p {
+            color: white;
+            font-size: 1.5rem;
+        }
+        .inputs {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+
+            div{
+                background-color: white;
+                width: 20px;
+                height: 10px;
+            }
+            input {
+                width: 25%;
+                font-size: 1rem;
+                text-align: center;
+                border: 2px solid #212121;
+                background-color: white;
+                border-radius: 5px;
+                &:active,
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+
+    .duration {
+        margin: 1rem auto;
+        display: inline-block;
+        color: #FF5151;
+        font-size: 1.5rem;
+        text-align: center;
+
+        span:first-of-type{
+            color:white;
+            margin-right: 10px;
+        }
+    }
+
+    .warning {
+        border: 2px solid #C9C7C7;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #212121;
+        text-align: center;
+        img {
+            width: auto;
+            height: 30px;
+        }
+        p {
+            color: #FF5151;
+            font-size: 1rem;
+        }
+    }
+
+    
+}

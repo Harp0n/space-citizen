@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "bizcharts": "^4.0.14",
     "bootstrap": "^4.5.3",
     "cra-template": "1.1.0",
@@ -15,6 +16,7 @@
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-switch": "^5.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

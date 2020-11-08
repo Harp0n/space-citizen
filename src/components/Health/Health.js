@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Chart, Line, Point, Tooltip, Axis } from 'bizcharts';
 
 import modules from './Health.module.scss';
-import Logo from '../../logo.svg';
+import Logo from '../../assets/images/logo.svg';
 import Button from '../Button/Button';
 import ChangingProgressProvider from './ChangingProgressProvider';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
