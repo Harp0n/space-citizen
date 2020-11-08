@@ -1,0 +1,73 @@
+$red: #CD4A4A;
+$background: #212121;
+$lightgray: #CAC7C7;
+
+.mainImage { 
+    position: relative;
+    overflow:auto;
+    height: auto;
+
+    img { 
+        float: left;
+    }
+}
+.rocketsImage { 
+    position: absolute;
+    overflow:auto;
+    height: auto;
+    bottom: 10%;
+    left: 10%;
+
+    img { 
+        float: left;
+    }
+}
+.logo { 
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.menu { 
+    width: 40%;
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+}
+.menuContainerManagment {
+    
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.5rem;
+    column-gap: 1rem;
+}
+
+.menuContainerTool {
+    text-decoration: none;
+}
+.header { 
+    color: white;
+    margin: 2rem 0; 
+    font-size: 3.5rem;
+}
+.button { 
+    display: inline-block;
+	width: 270px;
+	height: 90px;
+    border: 2px solid $red;
+    font-size: 3rem;
+    font-weight: 500;
+	background-color: transparent;
+	color: $red;
+    border-radius: 5px;
+    
+    &:focus {
+        outline: 0;
+    }
+    &:active, &:hover { 
+        color: $background;
+        background-color: $red;
+        border: none;
+        cursor: pointer;
+    }
+}

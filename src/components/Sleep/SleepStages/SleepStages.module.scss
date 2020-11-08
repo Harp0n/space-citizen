@@ -1,0 +1,15 @@
+.progressBar { 
+    width: 35%;
+    margin: auto;
+}
+
+.title {
+    font-size: 2rem;
+    color: white;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.container:first-of-type .title { 
+    margin-top: 2rem;
+}

@@ -1,0 +1,77 @@
+.sectionFood {
+    background-color: #161616;
+    width: 100%;
+    height: 100vh;
+    padding: 0 0;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.foodContainer {
+    width: 55%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.resourceContainer {
+    width: 45%;
+    background-color: #242424;
+}
+
+.resource {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0;
+    height: 4rem;
+}
+
+.itemType {
+    font-size: large;
+    font-weight: 300;
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.resValue {
+    background-color: #EA4D4D;
+    text-align: center;
+    display: inline-block;
+    padding: 1rem 2rem;
+    width: 40%;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: black;
+}
+
+.day {
+    font-size: 3rem;
+
+}
+
+.foodList {
+    position: relative;
+    list-style: none;
+    color: black;
+}
+
+.currentHour {
+    font-size: 3rem;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.hour {
+    background-color: white;
+    color: black;
+    padding: 0.5rem 2rem;
+
+}

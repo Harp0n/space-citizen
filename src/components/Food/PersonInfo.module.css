@@ -1,0 +1,90 @@
+.PersonInfo {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(32, 32, 32, 0.924);
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.PersonInfoForm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(32, 32, 32);
+    border-radius: 16px;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+
+.PersonInfoForm div {
+    margin-top: 2rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.PersonInfoForm div label {
+    margin-right: 1rem;
+}
+
+.styledInput {
+    margin: 0 40px;
+	width: 120px;
+	height: 45px;
+    border: 1px solid #ff5151;
+    font-size: 20px;
+    font-weight: 500;
+	background-color: transparent;
+	color: #ff5151;
+    border-radius: 5px;
+}
+
+.styledInput:focus {
+    outline: 0;
+}
+
+.genderOption {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+    ;
+}
+
+.submitOptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.styledInputButton {
+    margin: 0 40px;
+	width: 120px;
+	height: 45px;
+    border: 1px solid #ff5151;
+    font-size: 20px;
+    font-weight: 500;
+	background-color: transparent;
+	color: #ff5151;
+    border-radius: 5px;   
+    cursor: pointer;
+}
+
+.styledInputButton:focus {
+    outline: none;
+}
+
+.styledInputButton:hover,
+.styledInputButton:active {
+    background-color: #ff5151;
+    color: white;
+}

@@ -2,25 +2,41 @@ import React from 'react'
 import {
     Link
 } from "react-router-dom";
-import classes from "./Menu.module.css";
+import Image from '../assets/main.svg';
+import Logo from '../assets/logo.svg';
+import Rockets from '../assets/rockets.svg';
+import styles from "./Menu.module.scss";
 
 function Menu() {
     return (
-        <section className={classes.menu}>
-            <h1>MANAGMENT</h1>
-            <div className={classes.menuContainerManagment}>                
-                <Link to="/sleep">Sleep</Link>
-                <Link to="/light">Light</Link>
-                <Link to="/fitness">Fitness</Link>
-                <Link to="/health">Health</Link>
+        <React.Fragment>
+            <div className={styles.mainImage}>
+                <img src={Image} alt="spaceman" />
             </div>
+            <div className={styles.logo}>
+                <img src={Logo} alt="spaceman" />
+            </div>
+            <div className={styles.rocketsImage}>
+                <img src={Rockets} alt="spaceman" />
+            </div>
+            <section className={styles.menu}>
+                <h1 className={styles.header}>MANAGMENT</h1>
+                <div className={styles.menuContainerManagment}>
+                    <Link to="/sleep"><button className={styles.button}>Sleep</button></Link>
+                    <Link to="/light"><button className={styles.button}>Light</button></Link>
+                    <Link to="/food"><button className={styles.button}>Food</button></Link>
+                    <Link to="/health"><button className={styles.button}>Health</button></Link>
+                </div>
 
-            <h2>HOW TO</h2>
-            <div className={classes.menuContainerTool}>
-                <Link>Tutorial</Link>
-                <Link>Knowleadge</Link>
-            </div>
-        </section>
+                <h1 className={styles.header}>HOW TO</h1>
+                <div className={styles.menuContainerTool}>
+                    <div className={[styles.menuContainerManagment, styles.menuContainerTool].join(' ')}>
+                        <Link to="/sleep"><button className={styles.button}>Tutorials</button></Link>
+                        <Link to="/light"><button className={styles.button}>Knowledge</button></Link>
+                    </div>
+                </div>
+            </section>
+        </React.Fragment>
     )
 }
 

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Menu from "./components/Menu";
 
@@ -19,7 +19,6 @@ import React from "react";
 function App() {
   return (
     <div className="App">
-      <div className="app-container">
         <Router>
           <Switch>
             <Route exact path="/" component={Menu} />
@@ -30,7 +29,6 @@ function App() {
             <Route exact path="/sleep" component={Sleep} />
           </Switch>
         </Router>
-      </div>
     </div>
   );
 }
