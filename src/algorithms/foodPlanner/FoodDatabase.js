@@ -1,7 +1,8 @@
 import Food from './Food.js'
+import Food_edited from './food_edited.csv'
 
 async function csvJSON(path) {
-    return fetch(path).then(response => response.text()).then(csv => {
+    return fetch(Food_edited).then(response => response.text()).then(csv => {
         var lines = csv.split("\n");
 
         var result = [];
@@ -21,6 +22,7 @@ async function csvJSON(path) {
             result.push(obj);
 
         }
+
         return result; //JavaScript object
         //return JSON.stringify(result); //JSON
     });

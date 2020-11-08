@@ -68,6 +68,7 @@ class FoodPlanner {
         if (DEBUG) console.log('Zapotrzebowanie: ', left_nutritions);
         var return_food = [];
         var food_array = this.foodDatabase.getFoodList();
+        if (DEBUG) console.log('CSV: ', food_array);
 
         var iterations = 20;
 
@@ -134,6 +135,3 @@ export async function getDailyMenu(age, weight, height, gender) {
     await foodPlanner.init();
     return foodPlanner.generateDailyMenu(age, weight, height, gender);
 }
-
-console.log(getRequiredNutrition(21, 70, 170, 'male'));
-getDailyMenu(21, 70, 170, 'male').then(x => console.log(x));

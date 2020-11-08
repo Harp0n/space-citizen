@@ -37,11 +37,11 @@ function Food() {
     }
 
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         setModalVisible(false)
-        console.log(getDailyMenu(person));
-        console.log(getRequiredNutrition(person));
+        console.log(getRequiredNutrition(21, 70, 170, 'male'));
+        console.log(await getDailyMenu(21, 70, 170, 'male'));
     }
 
     const handleGenderChange = (event) => {
