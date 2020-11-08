@@ -12,9 +12,15 @@ button {
 	background-color: transparent;
 	color: $red;
     border-radius: 5px;
+    cursor: pointer;
     
     &:focus {
         outline: 0;
+    }
+    &:hover {
+        color: #212121;
+    background-color: #ff5151;
+    border: none;
     }
 }
 
