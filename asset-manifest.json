@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/space-citizen/static/css/main.3a1d81a9.chunk.css",
-    "main.js": "/space-citizen/static/js/main.2317375e.chunk.js",
-    "main.js.map": "/space-citizen/static/js/main.2317375e.chunk.js.map",
+    "main.js": "/space-citizen/static/js/main.35deeeff.chunk.js",
+    "main.js.map": "/space-citizen/static/js/main.35deeeff.chunk.js.map",
     "runtime-main.js": "/space-citizen/static/js/runtime-main.1cca5343.js",
     "runtime-main.js.map": "/space-citizen/static/js/runtime-main.1cca5343.js.map",
     "static/css/2.6c0f60ba.chunk.css": "/space-citizen/static/css/2.6c0f60ba.chunk.css",
@@ -28,6 +28,6 @@
     "static/css/2.6c0f60ba.chunk.css",
     "static/js/2.2322f369.chunk.js",
     "static/css/main.3a1d81a9.chunk.css",
-    "static/js/main.2317375e.chunk.js"
+    "static/js/main.35deeeff.chunk.js"
   ]
 }
